@@ -4,19 +4,28 @@ const inppassword = document.querySelector("#password")
 const inprepeatpassword = document.querySelector("#repeatPassword")
 const btnenviar = document.querySelector("#btnenviar")
 const alerta = document.querySelector('#alerta')
-console.log(alerta)
 
-function onsubmit(x) {
+const userCard = document.createElement('div')
+userCard.classList.add('card')
+userCard.style.width = '18rem'
+const cardHeader = document.createElement('div')
+cardHeader.classList.add('card-header')
+
+
+btnenviar.addEventListener('click',function (x) {
 
     x.preventDefault()
-    const chekPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$/
-    const mail = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
-    let userDate = {
+
+     const chekPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$/
+     const mail = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
+    
+     let userDate = {
         Name : inpuserName.value,
         Email : inpemail.value,
         Password : inppassword.value,
         RepeatPass : inprepeatpassword.value
     }
+
     
     if(userDate.Name  === "" || userDate.Email === "" || userDate.Password === "" || userDate.RepeatPass === "")
     {
@@ -37,7 +46,11 @@ function onsubmit(x) {
             alerta.style.background = 'red'
 
         } else {
-            localStorage.setItem('user', JSON.stringify(userDate)) 
+            const usersArray = JSON.parse(localStorage.getItem('users'))  || [] 
+            
+            usersArray.push(userDate)
+
+            localStorage.setItem('users', JSON.stringify(usersArray)) 
             alerta.innerHTML = 'User created success'
             alerta.style.background = 'green'
             
@@ -52,9 +65,10 @@ function onsubmit(x) {
             alerta.style.background = '#CFE2FF'
         }, 3000)
         
-        // const users = JSON.parse(localStorage.getItem('user'))  || [] 
-        }  
+        })
+
 
         
 
-btnenviar.addEventListener('click',onsubmit)
+
+
