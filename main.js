@@ -46,52 +46,68 @@ if (btnenviar) {
 
         if (userDate.Name === "" || userDate.Email === "" || userDate.Password === "" || userDate.RepeatPass === "") {
 
-            alerta.innerHTML = "Pleas filled all inputs "
-            alerta.style.background = 'red'
+            alerta.innerHTML = `<div class="alert alert-danger">Pleas filled all inputs</div>`
 
         } else if (mail.test(inpemail.value) !== true) {
-            alerta.innerHTML = 'Please enter a correct email'
-            alerta.style.background = 'red'
+            alerta.innerHTML = `<div class="alert alert-danger">Please enter a correct email</div>`
+            
 
         } else if (chekPassword.test(inppassword.value) !== true) {
-            alerta.innerHTML = ' Password must be at least 4 characters, no more than 8 characters, and must include at least one upper case letter, one lower case letter, and one numeric digit'
-            alerta.style.background = 'red'
+            alerta.innerHTML = `<div class="alert alert-danger">Password must be at least 4 characters, no more than 8 characters, and must include at least one upper case letter, one lower case letter, and one numeric digit</div>`
 
         } else if (inppassword.value !== inprepeatpassword.value) {
-            alerta.innerHTML = 'Please chek if your correctly reapit yor password'
-            alerta.style.background = 'red'
+            alerta.innerHTML = `<div class="alert alert-danger">Please chek if your correctly reapit yor password</div>`
 
         } else {
             let usersArray = JSON.parse(localStorage.getItem('users')) || []
-
+            
             usersArray.push(userDate)
-
-
+            
             localStorage.setItem('users', JSON.stringify(usersArray))
-            alerta.innerHTML = 'User created success'
-            alerta.style.background = 'green'
-
+            alerta.innerHTML =`<div class="alert alert-success" role="alert">User created success</div>`
+            
+            
             setTimeout(function () {
                 alerta.innerHTML = ""
                 alerta.style.background = '#CFE2FF'
                 location.href = 'users.html'
+                userCardGen()
+                printUser()
             }, 3000)
+            
+       
         }
         setTimeout(function () {
             alerta.innerHTML = ""
             alerta.style.background = '#CFE2FF'
         }, 3000)
-        printUser()
+        
+      
+        function userCardGen() {
+            return `
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">${usersArray.Name}</h5>
+                  <p class="card-text">${usersArray.Email}</p>
+                </div>
+              </div>
+            `
+          }
+        
     })
 }
 
+
 function printUser() {
-    UserPage.appendChild(userCard)
-    userCard.appendChild(cardHeader)
-    cardHeader.appendChild(ulUser)
-    ulUser.appendChild(liName)
+   return UserPage.appendChild(userCard),
+    userCard.appendChild(cardHeader),
+    cardHeader.appendChild(ulUser),
+    ulUser.appendChild(liName),
     ulUser.appendChild(liEmail)
 }
+// printUser()
+
+
 
 
 
