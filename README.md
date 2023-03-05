@@ -6,8 +6,6 @@ _Proyecto de Bootstrap & Validaciones_
 
 _Un pequeño proyecto para aprender a implementar el **bootstrap** y aplicar validaciones en la web_
 
-Mira **Deployment** para conocer como desplegar el proyecto.
-
 
 ### Pre-requisitos 📋
 
@@ -22,7 +20,7 @@ _Simplemente descargate o clona el archivo de **github** _
 
 ## Despliegue 📦
 
-_Abre la carpeta ne **Visual Studio Code**._
+_Abre la carpeta en **Visual Studio Code**._
 
 ## Construido con 🛠️
 
@@ -33,7 +31,7 @@ _Abre la carpeta ne **Visual Studio Code**._
 
 
 * **Volodymyr Kolomiiets** - *Trabajo Inicial* - [VolodymyrKolomiets](https://github.com/VolodymyrKolomiets)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
+* **Adrian Martinez Teba** - *Documentación* - [adrianMartinezTeba](https://github.com/adrianMartinezTebal)
 
 
 ## Licencia 📄
